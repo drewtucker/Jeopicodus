@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, Output, OnInit } from '@angular/core';
+import { Router, Routes, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-game-board',
