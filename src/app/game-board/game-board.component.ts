@@ -9,8 +9,7 @@ import * as $ from 'jquery';
   styleUrls: ['./game-board.component.css']
 })
 export class GameBoardComponent implements OnInit {
-
-
+public categoryArray:string[] = [];
   constructor() { }
 
   ngOnInit() {
@@ -19,73 +18,107 @@ export class GameBoardComponent implements OnInit {
   // CATEGORY API CALLS
   // https://opentdb.com/api.php?amount=5&category={{randomCategory}}&difficulty=easy&type=multiple
 
+  // categoryArray: string[] = [];
 
 }
 
+const gameBoard:GameBoardComponent = new GameBoardComponent();
+
 $(document).ready(function() {
-
-  const randomCategory = Math.floor(Math.random() * 24) + 9;
-
+  let randomCategory = Math.floor(Math.random() * 24) + 9;
   $.get(`https://opentdb.com/api.php?amount=5&category=${randomCategory}&difficulty=easy&type=multiple`).then(function(response) {
-
-  console.log(response);
     $("#category-one").text($("<div/>").html(response.results[0].category).text());
-
+    gameBoard.categoryArray.push(response.results[0].category);
+    console.log(gameBoard.categoryArray);
   }).fail(function(error) {
-  console.log(error);
-});
+  });
 
 });
 
 $(document).ready(function() {
-
   let randomCategory = Math.floor(Math.random() * 24) + 9;
   $.get(`https://opentdb.com/api.php?amount=5&category=${randomCategory}&difficulty=easy&type=multiple`).then(function(response) {
-    if(response.results[0].category === ($("#category-one").val()))
-    {
-      alert("DUPLICATE!!");
-    }
-    else
-    {
+    if(gameBoard.categoryArray.includes(response.results[0].category) || response.results[0].category === undefined)
+  {
+    $.get(`https://opentdb.com/api.php?amount=5&category=${randomCategory}&difficulty=easy&type=multiple`).then(function(response) {
       $("#category-two").text($("<div/>").html(response.results[0].category).text());
-
-    }
-
-
+      gameBoard.categoryArray.push(response.results[0].category);
+      console.log(gameBoard.categoryArray);
+    }).fail(function(error) {
+    });
+  }
+  else{
+    $("#category-two").text($("<div/>").html(response.results[0].category).text());
+    gameBoard.categoryArray.push(response.results[0].category);
+    console.log(gameBoard.categoryArray);
+  }
   }).fail(function(error) {
-  console.log(error);
-});
+    console.log(error);
+  });
 });
 
 $(document).ready(function() {
-
   let randomCategory = Math.floor(Math.random() * 24) + 9;
   $.get(`https://opentdb.com/api.php?amount=5&category=${randomCategory}&difficulty=easy&type=multiple`).then(function(response) {
+    if(gameBoard.categoryArray.includes(response.results[0].category) || response.results[0].category === undefined)
+  {
+    $.get(`https://opentdb.com/api.php?amount=5&category=${randomCategory}&difficulty=easy&type=multiple`).then(function(response) {
+      $("#category-three").text($("<div/>").html(response.results[0].category).text());
+      gameBoard.categoryArray.push(response.results[0].category);
+      console.log(gameBoard.categoryArray);
+    }).fail(function(error) {
+    });
+  }
+  else{
     $("#category-three").text($("<div/>").html(response.results[0].category).text());
-
+    gameBoard.categoryArray.push(response.results[0].category);
+    console.log(gameBoard.categoryArray);
+  }
   }).fail(function(error) {
-  console.log(error);
-});
+    console.log(error);
+  });
 });
 
 $(document).ready(function() {
-
   let randomCategory = Math.floor(Math.random() * 24) + 9;
   $.get(`https://opentdb.com/api.php?amount=5&category=${randomCategory}&difficulty=easy&type=multiple`).then(function(response) {
+    if(gameBoard.categoryArray.includes(response.results[0].category) || response.results[0].category === undefined)
+  {
+    $.get(`https://opentdb.com/api.php?amount=5&category=${randomCategory}&difficulty=easy&type=multiple`).then(function(response) {
+      $("#category-four").text($("<div/>").html(response.results[0].category).text());
+      gameBoard.categoryArray.push(response.results[0].category);
+      console.log(gameBoard.categoryArray);
+    }).fail(function(error) {
+    });
+  }
+  else{
     $("#category-four").text($("<div/>").html(response.results[0].category).text());
-
+    gameBoard.categoryArray.push(response.results[0].category);
+    console.log(gameBoard.categoryArray);
+  }
   }).fail(function(error) {
-  console.log(error);
-});
+    console.log(error);
+  });
 });
 
 $(document).ready(function() {
-
   let randomCategory = Math.floor(Math.random() * 24) + 9;
   $.get(`https://opentdb.com/api.php?amount=5&category=${randomCategory}&difficulty=easy&type=multiple`).then(function(response) {
+    if(gameBoard.categoryArray.includes(response.results[0].category) || response.results[0].category === undefined)
+  {
+    $.get(`https://opentdb.com/api.php?amount=5&category=${randomCategory}&difficulty=easy&type=multiple`).then(function(response) {
+      $("#category-five").text($("<div/>").html(response.results[0].category).text());
+      gameBoard.categoryArray.push(response.results[0].category);
+      console.log(gameBoard.categoryArray);
+    }).fail(function(error) {
+    });
+  }
+  else{
     $("#category-five").text($("<div/>").html(response.results[0].category).text());
-
+    gameBoard.categoryArray.push(response.results[0].category);
+    console.log(gameBoard.categoryArray);
+  }
   }).fail(function(error) {
-  console.log(error);
-});
+    console.log(error);
+  });
 });
