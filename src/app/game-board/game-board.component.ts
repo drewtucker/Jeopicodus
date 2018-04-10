@@ -24,13 +24,68 @@ export class GameBoardComponent implements OnInit {
 
 $(document).ready(function() {
 
-  let randomCategory = Math.floor(Math.random() * 24) + 9;
+  const randomCategory = Math.floor(Math.random() * 24) + 9;
 
   $.get(`https://opentdb.com/api.php?amount=5&category=${randomCategory}&difficulty=easy&type=multiple`).then(function(response) {
-    console.log(response.results[0]);
-    $("#results").text($("<div/>").html(response.results[0].question).text());
+
+  console.log(response);
+    $("#category-one").text($("<div/>").html(response.results[0].category).text());
+
   }).fail(function(error) {
   console.log(error);
 });
 
+});
+
+$(document).ready(function() {
+
+  let randomCategory = Math.floor(Math.random() * 24) + 9;
+  $.get(`https://opentdb.com/api.php?amount=5&category=${randomCategory}&difficulty=easy&type=multiple`).then(function(response) {
+    if(response.results[0].category === ($("#category-one").val()))
+    {
+      alert("DUPLICATE!!");
+    }
+    else
+    {
+      $("#category-two").text($("<div/>").html(response.results[0].category).text());
+
+    }
+
+
+  }).fail(function(error) {
+  console.log(error);
+});
+});
+
+$(document).ready(function() {
+
+  let randomCategory = Math.floor(Math.random() * 24) + 9;
+  $.get(`https://opentdb.com/api.php?amount=5&category=${randomCategory}&difficulty=easy&type=multiple`).then(function(response) {
+    $("#category-three").text($("<div/>").html(response.results[0].category).text());
+
+  }).fail(function(error) {
+  console.log(error);
+});
+});
+
+$(document).ready(function() {
+
+  let randomCategory = Math.floor(Math.random() * 24) + 9;
+  $.get(`https://opentdb.com/api.php?amount=5&category=${randomCategory}&difficulty=easy&type=multiple`).then(function(response) {
+    $("#category-four").text($("<div/>").html(response.results[0].category).text());
+
+  }).fail(function(error) {
+  console.log(error);
+});
+});
+
+$(document).ready(function() {
+
+  let randomCategory = Math.floor(Math.random() * 24) + 9;
+  $.get(`https://opentdb.com/api.php?amount=5&category=${randomCategory}&difficulty=easy&type=multiple`).then(function(response) {
+    $("#category-five").text($("<div/>").html(response.results[0].category).text());
+
+  }).fail(function(error) {
+  console.log(error);
+});
 });

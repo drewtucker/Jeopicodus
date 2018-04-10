@@ -1,5 +1,5 @@
 body {
-  background-image: url(lego.jpg);
+  background-image: url('../../assets/img/lego.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   /*background-position: center;*/
@@ -12,7 +12,7 @@ h1 {
   margin-top: 100px;
 }
 th {
-  margin-left: : 50px;
+  margin-left: 50px;
 }
 
 .transbox {
@@ -38,7 +38,7 @@ th {
     outline: 10px solid black;
     text-align: center;
     background-color: #ffffff;
-
+    vertical-align: middle;
 }
 
 #addScoreToPlayerOne {
