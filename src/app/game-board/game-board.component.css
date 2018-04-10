@@ -2,52 +2,87 @@ body {
   background-image: url('../../assets/img/lego.jpg');
   background-repeat: no-repeat;
   background-size: cover;
-  /*background-position: center;*/
 }
+
 
 h1 {
   color: beige;
   text-align: center;
   font-family: monospace;
   margin-top: 100px;
+  text-shadow: 4px 2px black ;
 }
 th {
-  margin-left: 50px;
+  margin-left:50px;
 }
 
 .transbox {
     margin: 30px;
-    /*background-color: #ffffff;*/
-    /*border: 1px solid black;*/
     opacity: 0.7;
     filter: alpha(opacity=60); /* For IE8 and earlier */
+    /*display: none;*/
 }
 .wrapper {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  /*grid-gap: 5px;*/
-  grid-auto-rows: minmax(100px, auto);
-  /*border-radius:*/
-  /*border: solid grey;
-   border: 20px;*/
   grid-column-gap: 10px;
+}
 
+.wrapperAnswer {
+  display: none;
 }
 
 .frame {
     outline: 10px solid black;
+    padding: 30px;
     text-align: center;
     background-color: #ffffff;
-    vertical-align: middle;
+    font-size: 20px;
+    font-weight: bold;
+    width: 180px;
 }
 
-#addScoreToPlayerOne {
-text-align: center;
+.frameQuestion {
+  width: 1050px;
+  height: 100px;
+  padding: 22px;
+  border: 8px solid black;
+  border-radius: 20px;
+  text-align: center;
+  opacity: 0.7;
+  background-color: #ffffff;
+}
+.frame-score {
+  width: 525px;
+  height: 50px;
+  border: 5px solid black;
+  border-radius: 20px;
+  text-align: center;
+  padding: 7px;
+  opacity: 0.7;
+  background-color: #ffffff;
+  font-weight: bold;
+  font-family: fantasy;
+  text-shadow: 2px 2px #DC1808 ;
 }
 
-#addScoreToPlayerTwo {
-text-align: center;
+.frame-answer {
+  width: 525px;
+  height: 100px;
+  padding: 30px;
+  border: 5px solid black;
+  border-radius: 20px;
+  text-align: center;
+  opacity: 0.7;
+  font-size: 20px;
+  font-weight: bold;
 }
+
+#skipButton {
+ display: flex;
+ justify-content: center;
+}
+
 
 #category-one {
   grid-column: 2;
@@ -178,8 +213,4 @@ text-align: center;
 #category-five-question-five{
   grid-column: 6;
   grid-row: 7;
-}
-
-#question-box {
-  border-radius: 25px;
 }
