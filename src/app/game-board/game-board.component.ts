@@ -4,6 +4,7 @@ import { HttpModule } from '@angular/http';
 import * as $ from 'jquery';
 import { Question } from '../models/question.model';
 import { Player } from '../models/player.model';
+import { Game } from '../models/game.model';
 
 @Component({
   selector: 'app-game-board',
@@ -13,11 +14,6 @@ import { Player } from '../models/player.model';
 export class GameBoardComponent implements OnInit {
   public categoryArray:string[] = [];
 
-  public cat1Array:Question[] = [];
-  public cat2Array:Question[] = [];
-  public cat3Array:Question[] = [];
-  public cat4Array:Question[] = [];
-  public cat5Array:Question[] = [];
 
   constructor() { }
 
@@ -32,7 +28,15 @@ const gameBoard:GameBoardComponent = new GameBoardComponent();
 //COLUMN 1 API CALL
 $(document).ready(function() {
 
+
+  // var currentGame;
+  // $("#nameForm").submit(function(event) {
+  //   event.preventDefault();
+  //   currentGame = new Game($("#player1name").val(), $("#player2name").val());
+  // });
+
   var nums = [0,1,2,3];
+  var catNums = [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32];
   var gen_nums = [];
 
   function in_array(array, el) {
@@ -53,7 +57,7 @@ $(document).ready(function() {
 
   //******** API CALL #1 - FIRST COLUMN *******
   let promise1 = new Promise(function(resolve, reject) {
-    let randomCategory = Math.floor(Math.random() * 24) + 9;
+    let randomCategory = get_rand(catNums);
     let request = new XMLHttpRequest();
     let url = `https://opentdb.com/api.php?amount=5&category=${randomCategory}&difficulty=easy&type=multiple`;
     request.onload = function() {
@@ -143,7 +147,7 @@ $(document).ready(function() {
 //******** API CALL #2 - SECOND COLUMN *******
 
 let promise2 = new Promise(function(resolve, reject) {
-  let randomCategory = Math.floor(Math.random() * 24) + 9;
+  let randomCategory = get_rand(catNums);;
 
   let request = new XMLHttpRequest();
   let url = `https://opentdb.com/api.php?amount=5&category=${randomCategory}&difficulty=easy&type=multiple`;
@@ -235,7 +239,7 @@ $("#category-two-question-five").click(function() {
 //******** API CALL #3 - THIRD COLUMN *******
 
 let promise3 = new Promise(function(resolve, reject) {
-  let randomCategory = Math.floor(Math.random() * 24) + 9;
+  let randomCategory = get_rand(catNums);;
 
   let request = new XMLHttpRequest();
   let url = `https://opentdb.com/api.php?amount=5&category=${randomCategory}&difficulty=easy&type=multiple`;
@@ -326,7 +330,7 @@ $("#category-three-question-five").click(function() {
 //******** API CALL #4 - FOURTH COLUMN *******
 
 let promise4 = new Promise(function(resolve, reject) {
-  let randomCategory = Math.floor(Math.random() * 24) + 9;
+  let randomCategory = get_rand(catNums);;
 
   let request = new XMLHttpRequest();
   let url = `https://opentdb.com/api.php?amount=5&category=${randomCategory}&difficulty=easy&type=multiple`;
@@ -418,7 +422,7 @@ $("#category-four-question-five").click(function() {
 //******** API CALL #5 - FIFTH COLUMN *******
 
 let promise5 = new Promise(function(resolve, reject) {
-  let randomCategory = Math.floor(Math.random() * 24) + 9;
+  let randomCategory = get_rand(catNums);;
 
   let request = new XMLHttpRequest();
   let url = `https://opentdb.com/api.php?amount=5&category=${randomCategory}&difficulty=easy&type=multiple`;
@@ -513,194 +517,3 @@ $(".frame").each(function(index) {
   });
 });
 });
-
-    //
-    // $.get(`https://opentdb.com/api.php?amount=5&category=${randomCategory}&difficulty=easy&type=multiple`).then(function(response) {
-    //
-    //   for(let i = 0; i < response.results.length; i++)
-    //   {
-    //     let newQuestion = new Question(response.results[i].category,response.results[i].question, response.results[i].correct_answer, response.results[i].incorrect_answers)
-    //   }
-    //   let question1 = new Question(response.results[0].category, response.results[0].question, response.results[0].correct_answer, response.results[0].incorrect_answers);
-    //   gameBoard.cat1Array.push(question1);
-    //
-    //   let question2 = new Question(response.results[1].category, response.results[1].question, response.results[1].correct_answer, response.results[1].incorrect_answers);
-    //   gameBoard.cat1Array.push(question2);
-    //
-    //
-    //   let question3 = new Question(response.results[2].category, response.results[2].question, response.results[2].correct_answer, response.results[2].incorrect_answers);
-    //   gameBoard.cat1Array.push(question3);
-    //
-    //
-    //   let question4 = new Question(response.results[3].category, response.results[3].question, response.results[3].correct_answer, response.results[3].incorrect_answers);
-    //   gameBoard.cat1Array.push(question4);
-    //
-    //
-    //   let question5 = new Question(response.results[4].category, response.results[4].question, response.results[4].correct_answer, response.results[4].incorrect_answers);
-    //   gameBoard.cat1Array.push(question5);
-    //
-    //   $("#category-one").text($("<div/>").html(question1.category).text());
-    //   gameBoard.categoryArray.push(response.results[0].category);
-    //   // console.log(gameBoard.categoryArray);
-    // }).fail(function(error) {
-    // });
-
-
-
-
-    // let squares = document.getElementsByClassName("frame");
-    // for(var i = 0; i < squares.length; i ++)
-    // {
-    //   squares[i].addEventListener("click")
-    // }
-    //
-    // $('#category-one-question-one').click(function() {
-    //   $('.transbox').hide();
-    //   $('.wrapperAnswer').show();
-    //   $('#question-box').text($("<div/>").html(gameBoard.cat1Array[0].question).text());
-    //   $("#answer-option-one").text(gameBoard.cat1Array[0].choices[0]);
-    //   $("#answer-option-two").text(gameBoard.cat1Array[0].choices[1]);
-    //   $("#answer-option-three").text(gameBoard.cat1Array[0].choices[2]);
-    //   $("#answer-option-four").text(gameBoard.cat1Array[0].answer);
-    // });
-    //
-    // $('#category-one-question-two').click(function() {
-    //   $('.transbox').hide();
-    //   $('.wrapperAnswer').show();
-    //   $('#question-box').text($("<div/>").html(gameBoard.cat1Array[1].question).text());
-    //   $("#answer-option-one").text(gameBoard.cat1Array[1].choices[0]);
-    //   $("#answer-option-two").text(gameBoard.cat1Array[1].answer);
-    //   $("#answer-option-three").text(gameBoard.cat1Array[1].choices[2]);
-    //   $("#answer-option-four").text(gameBoard.cat1Array[1].choices[1]);
-    // });
-    //
-    // $('#category-one-question-three').click(function() {
-    //   $('.transbox').hide();
-    //   $('.wrapperAnswer').show();
-    //   $('#question-box').text($("<div/>").html(gameBoard.cat1Array[2].question).text());
-    //   $("#answer-option-two").text(gameBoard.cat1Array[2].choices[0]);
-    //   $("#answer-option-one").text(gameBoard.cat1Array[2].answer);
-    //   $("#answer-option-three").text(gameBoard.cat1Array[2].choices[2]);
-    //   $("#answer-option-four").text(gameBoard.cat1Array[2].choices[1]);
-    // });
-    //
-    // $('#category-one-question-four').click(function() {
-    //   $('.transbox').hide();
-    //   $('.wrapperAnswer').show();
-    //   $('#question-box').text($("<div/>").html(gameBoard.cat1Array[3].question).text());
-    //   $("#answer-option-one").text(gameBoard.cat1Array[3].choices[0]);
-    //   $("#answer-option-three").text(gameBoard.cat1Array[3].answer);
-    //   $("#answer-option-two").text(gameBoard.cat1Array[3].choices[2]);
-    //   $("#answer-option-four").text(gameBoard.cat1Array[3].choices[1]);
-    // });
-    //
-    // $('#category-one-question-five').click(function() {
-    //   $('.transbox').hide();
-    //   $('.wrapperAnswer').show();
-    //   $('#question-box').text($("<div/>").html(gameBoard.cat1Array[4].question).text());
-    //   $("#answer-option-two").text(gameBoard.cat1Array[4].choices[0]);
-    //   $("#answer-option-one").text(gameBoard.cat1Array[4].answer);
-    //   $("#answer-option-three").text(gameBoard.cat1Array[4].choices[2]);
-    //   $("#answer-option-four").text(gameBoard.cat1Array[4].choices[1]);
-    // });
-
-
-
-  //COLUMN 2 API CALL
-  //
-  // $(document).ready(function() {
-  //   let randomCategory = Math.floor(Math.random() * 24) + 9;
-  //   $.get(`https://opentdb.com/api.php?amount=5&category=${randomCategory}&difficulty=easy&type=multiple`).then(function(response) {
-  //     if(gameBoard.categoryArray.includes(response.results[0].category) || response.results[0].category === undefined)
-  //     {
-  //       $.get(`https://opentdb.com/api.php?amount=5&category=${randomCategory}&difficulty=easy&type=multiple`).then(function(response) {
-  //         $("#category-two").text($("<div/>").html(response.results[0].category).text());
-  //         gameBoard.categoryArray.push(response.results[0].category);
-  //         console.log(gameBoard.categoryArray);
-  //       }).fail(function(error) {
-  //       });
-  //     }
-  //     else{
-  //       $("#category-two").text($("<div/>").html(response.results[0].category).text());
-  //       gameBoard.categoryArray.push(response.results[0].category);
-  //       console.log(gameBoard.categoryArray);
-  //     }
-  //   }).fail(function(error) {
-  //     console.log(error);
-  //   });
-  // });
-  //
-  //
-  // //COLUMN 3 API CALL
-  //
-  // $(document).ready(function() {
-  //   let randomCategory = Math.floor(Math.random() * 24) + 9;
-  //   $.get(`https://opentdb.com/api.php?amount=5&category=${randomCategory}&difficulty=easy&type=multiple`).then(function(response) {
-  //     if(gameBoard.categoryArray.includes(response.results[0].category) || response.results[0].category === undefined)
-  //     {
-  //       $.get(`https://opentdb.com/api.php?amount=5&category=${randomCategory}&difficulty=easy&type=multiple`).then(function(response) {
-  //         $("#category-three").text($("<div/>").html(response.results[0].category).text());
-  //         gameBoard.categoryArray.push(response.results[0].category);
-  //         console.log(gameBoard.categoryArray);
-  //       }).fail(function(error) {
-  //       });
-  //     }
-  //     else{
-  //       $("#category-three").text($("<div/>").html(response.results[0].category).text());
-  //       gameBoard.categoryArray.push(response.results[0].category);
-  //       console.log(gameBoard.categoryArray);
-  //     }
-  //   }).fail(function(error) {
-  //     console.log(error);
-  //   });
-  // });
-  //
-  //
-  // //COLUMN 4 API CALL
-  //
-  // $(document).ready(function() {
-  //   let randomCategory = Math.floor(Math.random() * 24) + 9;
-  //   $.get(`https://opentdb.com/api.php?amount=5&category=${randomCategory}&difficulty=easy&type=multiple`).then(function(response) {
-  //     if(gameBoard.categoryArray.includes(response.results[0].category) || response.results[0].category === undefined)
-  //     {
-  //       $.get(`https://opentdb.com/api.php?amount=5&category=${randomCategory}&difficulty=easy&type=multiple`).then(function(response) {
-  //         $("#category-four").text($("<div/>").html(response.results[0].category).text());
-  //         gameBoard.categoryArray.push(response.results[0].category);
-  //         console.log(gameBoard.categoryArray);
-  //       }).fail(function(error) {
-  //       });
-  //     }
-  //     else{
-  //       $("#category-four").text($("<div/>").html(response.results[0].category).text());
-  //       gameBoard.categoryArray.push(response.results[0].category);
-  //       console.log(gameBoard.categoryArray);
-  //     }
-  //   }).fail(function(error) {
-  //     console.log(error);
-  //   });
-  // });
-  //
-  //
-  // //COLUMN 5 API CALL
-  //
-  // $(document).ready(function() {
-  //   let randomCategory = Math.floor(Math.random() * 24) + 9;
-  //   $.get(`https://opentdb.com/api.php?amount=5&category=${randomCategory}&difficulty=easy&type=multiple`).then(function(response) {
-  //     if(gameBoard.categoryArray.includes(response.results[0].category) || response.results[0].category === undefined)
-  //     {
-  //       $.get(`https://opentdb.com/api.php?amount=5&category=${randomCategory}&difficulty=easy&type=multiple`).then(function(response) {
-  //         $("#category-five").text($("<div/>").html(response.results[0].category).text());
-  //         gameBoard.categoryArray.push(response.results[0].category);
-  //         console.log(gameBoard.categoryArray);
-  //       }).fail(function(error) {
-  //       });
-  //     }
-  //     else{
-  //       $("#category-five").text($("<div/>").html(response.results[0].category).text());
-  //       gameBoard.categoryArray.push(response.results[0].category);
-  //       console.log(gameBoard.categoryArray);
-  //     }
-  //   }).fail(function(error) {
-  //     console.log(error);
-  //   });
-  // });
