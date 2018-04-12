@@ -1,4 +1,4 @@
 body {
-  /*background-color: blue;*/
-  /*color: white;*/
+  background-image: url('./assets/img/topography.svg'),linear-gradient(60deg, #6d47d9, #f93d66);
+  height: -webkit-fill-available
 }

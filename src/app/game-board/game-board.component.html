@@ -1,18 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-  <!-- <script src="js/jquery-3.2.1.js"></script>
-  <script src="js/scripts.js"></script> -->
-  <title>Game Board</title>
-</head>
+
 <div class="container">
-  <body>
     <div class="transbox">
       <div class="wrapper">
 
-      <div id="column1">
+      <div class="column-view">
         <div class="frame" id="category-one">Category-One</div>
         <div class="frame" id="category-one-question-one" value=200>200</div>
         <div class="frame" id="category-one-question-two" value=400>400</div>
@@ -21,7 +12,7 @@
         <div class="frame" id="category-one-question-five" value=1000>1000</div>
       </div>
 
-      <div id="column2">
+      <div class="column-view">
         <div class="frame" id="category-two">Category-Two</div>
         <div class="frame" id="category-two-question-one" value=200>200</div>
         <div class="frame" id="category-two-question-two" value=400>400</div>
@@ -30,8 +21,7 @@
         <div class="frame" id="category-two-question-five" value=1000>1000</div>
       </div>
 
-
-      <div id="column3">
+      <div class="column-view">
         <div class="frame" id="category-three">Category-Three</div>
         <div class="frame" id="category-three-question-one" value=200>200</div>
         <div class="frame" id="category-three-question-two" value=400>400</div>
@@ -40,8 +30,7 @@
         <div class="frame" id="category-three-question-five" value=1000>1000</div>
       </div>
 
-
-      <div id="column4">
+      <div class="column-view">
         <div class="frame" id="category-four">Category-Four</div>
         <div class="frame" id="category-four-question-one" value=200>200</div>
         <div class="frame" id="category-four-question-two" value=400>400</div>
@@ -50,8 +39,7 @@
         <div class="frame" id="category-four-question-five" value=1000>1000</div>
       </div>
 
-
-      <div id="column5">
+      <div class="column-view">
         <div class="frame" id="category-five">Category-Five</div>
         <div class="frame" id="category-five-question-one" value=200>200</div>
         <div class="frame" id="category-five-question-two" value=400>400</div>
@@ -62,21 +50,22 @@
 
       </div>
     </div>
-
     <!-- From here the "<table align="center">" is the score result page -->
     <table align="center">
       <tr>
-        <th><h2 class="frame-score">User Name One</h2></th>
-        <th><h2 class="frame-score">User Name Two</h2></th>
+        <th><textarea class="frame-score" id="playerOneName"></textarea></th>
+        <th><textarea class="frame-score" id="playerTwoName"></textarea></th>
       </tr>
       <tr>
-        <th><h2 class="frame-score" id="addScoreToPlayerOne">11</h2></th>
-        <th><h2 class="frame-score" id="addScoreToPlayerTwo">12</h2></th>
+        <th><h2 class="frame-score" id="playerOneScore"></h2></th>
+        <th><h2 class="frame-score" id="playerTwoScore"></h2></th>
       </tr>
     </table>
     <br>
-
-
+    <audio id="jeopardySong">
+      <source src='../../assets/Jeopardy - Think Music.mp3' type="audio/mp3">
+        Your browser does not the <code>audio</code> element.
+    </audio>
     <!-- From here the "<div class="wrapperAnswer" align="center">>" can be toggled to hide the question detail page" -->
     <div class="wrapperAnswer" align="center">
       <table>
@@ -96,13 +85,9 @@
       </table>
       <br>
       <div id="skipButton">
-        <button  class="btn btn-success btn-lg" type="button" >Skip</button>
+        <button id="skipButton"  class="btn btn-success btn-lg" (click)="skipQuestion" type="button" >Skip</button>
       </div>
       <br>
       <br>
     </div>
-
-
-</body>
 </div>
-</html>

@@ -10,7 +10,6 @@ import { DoubleJeopardyScreenComponent } from './double-jeopardy-screen/double-j
 import { StartScreenComponent } from './start-screen/start-screen.component';
 import { WinScreenComponent } from './win-screen/win-screen.component';
 import { Routes, RouterModule } from '@angular/router';
-import { routing } from './app.routing';
 
 @NgModule({
   declarations: [
@@ -22,8 +21,7 @@ import { routing } from './app.routing';
     WinScreenComponent
   ],
   imports: [
-    BrowserModule,
-    routing
+    BrowserModule
   ],
   providers: [],
   bootstrap: [AppComponent]

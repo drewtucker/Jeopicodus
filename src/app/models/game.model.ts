@@ -3,7 +3,7 @@ export class Game {
   public playerTwoScore: number = 0;
   public playerOneTurn: boolean = true;
   public playerTwoTurn: boolean = false;
-  constructor(public playerOne:string, public playerTwo: string){}
+  constructor(public playerOne:string = "Player1", public playerTwo: string = "Player2"){}
 
   changePlayer()
   {
@@ -21,13 +21,13 @@ export class Game {
 
   getWinner()
   {
-    if(this.playerOneScore >= this.playerTwoScore)
+    if(this.playerOneScore > this.playerTwoScore)
     {
-      return alert(this.playerOne + "has won!!");
+      return alert(this.playerOne + " has won!!");
     }
-    else if (this.playerTwoScore >= this.playerOneScore)
+    else if (this.playerTwoScore > this.playerOneScore)
     {
-      return alert(this.playerTwo + "has won!!");
+      return alert(this.playerTwo + " has won!!");
     }
     else{
       return alert("It's a draw!");

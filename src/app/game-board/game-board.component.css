@@ -1,7 +1,5 @@
 body {
-  background-image: url('../../assets/img/lego.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
+    height: -webkit-fill-available
 }
 
 
@@ -12,19 +10,63 @@ h1 {
   margin-top: 100px;
   text-shadow: 4px 2px black ;
 }
+table {
+  margin-top: 40px;
+}
 th {
   margin-left:50px;
 }
 
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.column-view {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(6 1fr)
+}
+.frame {
+  min-width: 200px;
+  min-height: 100px;
+  outline: 5px solid black;
+  box-sizing: border-box;
+  text-align: center;
+  background-color: #ffffff;
+  opacity: .6;
+  font-size: 20px;
+  font-weight: bold;
+  height: 100%;
+  width: 100%;
+  padding-top: 20px;
+}
+
+.wrapperAnswer {
+  display: none;
+}
+.frame-answer:hover {
+  color: red;
+  cursor: pointer;
+}
+.frame:hover {
+  background-color: purple;
+  color: white;
+  cursor: pointer;
+}
+
+/*
 .transbox {
-    margin: 30px;
+
+    margin: 0px;
     opacity: 0.7;
     filter: alpha(opacity=60); /* For IE8 and earlier */
     /*display: none;*/
-}
-.wrapper {
+/*}*/
+/*.wrapper {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(1, 200x);
   grid-column-gap: 10px;
 }
 
@@ -33,13 +75,20 @@ th {
 }
 
 .frame {
+    overflow-y: none;
     outline: 10px solid black;
     padding: 30px;
     text-align: center;
     background-color: #ffffff;
     font-size: 20px;
     font-weight: bold;
-    width: 180px;
+    height: 100%;
+    width: 100%;
+}
+*/
+img {
+  margin-bottom: 20px;
+  padding: 20px;
 }
 
 .frameQuestion {
@@ -60,10 +109,10 @@ th {
   text-align: center;
   padding: 7px;
   opacity: 0.7;
-  background-color: #ffffff;
+  background-color: #ffffff;*/
   font-weight: bold;
-  font-family: fantasy;
-  text-shadow: 2px 2px #DC1808 ;
+  /*font-family: fantasy;*/
+  text-shadow: 2px 2px white ;
 }
 
 .frame-answer {
@@ -83,8 +132,12 @@ th {
  justify-content: center;
 }
 
+*[id^='column'] {
+  display: grid;
+  grid-template-rows: repeat(6 200px)
+}
 
-#category-one {
+/*#category-one {
   grid-column: 2;
   grid-row: 2;
   font-weight: bold;
@@ -213,4 +266,4 @@ th {
 #category-five-question-five{
   grid-column: 6;
   grid-row: 7;
-}
+}*/
