@@ -32,16 +32,21 @@ $(document).ready(function() {
   $("#playerTwoName").text(currentGame.playerTwo);
   $("#playerOneScore").text(currentGame.playerOneScore);
   $("#playerTwoScore").text(currentGame.playerTwoScore);
-  // var currentGame = new Game();
   $("#nameForm").submit(function(event) {
     event.preventDefault();
-    // currentGame = new Game($("#player1name").val(), $("#player2name").val());
+
     this.playerOneName = $("#player1Name").val();
     this.playerTwoName = $("#player2Name").val();
 
   });
+  //REPRESENTS THE 4 SLOTS TO FILL WITH TRIVIA QUESTIONS
   var nums = [0,1,2,3];
+  //API CONTAINS CATEGORY SEARCH PARAMETER: CATEGORIES GO FROM 9-32
   var catNums = [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32];
+
+  //FUNCTION FOUND ONLINE: GENERATES RANDOM SEQUENCE OF NON-REPEATING NUMBERS FOR USE IN ASSIGNING ANSWER POSITION ON THE QUESTION SCREEN.
+  //BASICALLY, ASSURES US THAT THE CORRECT ANSWER WON'T BE ASSIGNED TO THE SAME SLOT FOR EVERY QUESTION
+
   var gen_nums = [];
   function in_array(array, el) {
     for(var i = 0 ; i < array.length; i++)
@@ -50,7 +55,6 @@ $(document).ready(function() {
   }
   let i = 0;
   function get_rand(array) {
-    console.log(i++)
     let rand = array[Math.floor(Math.random()*array.length)];
     if(!in_array(gen_nums, rand)) {
       gen_nums.push(rand);
@@ -62,6 +66,7 @@ $(document).ready(function() {
     return _.shuffle(num);
   }
 
+//API CALL USED MAKING 5 SEPERATE PROMISES, EACH PROMISE REPRESENTS ONE CATEGORY TO RETURN. CLICK LISTENERS ARE THEN ASSIGNED TO EACH INDIVIDUAL GRID SQUARE. ONCE CLICKED, THE CORRESPONDING QUESTION IS DISPLAYED, AND POTENTIAL ANSWERS ARE RANDOMLY ASSIGNED TO ANSWER DIVS
 
   //******** API CALL #1 - FIRST COLUMN *******
   let promise1 = new Promise(function(resolve, reject) {
@@ -71,7 +76,6 @@ $(document).ready(function() {
     request.onload = function() {
       if(request.status === 200) {
         resolve(request.response);
-        console.log(request.status);
       }
       else {
         reject(Error(request.statusText));
@@ -83,7 +87,6 @@ $(document).ready(function() {
   });
   promise1.then(function(response: any) {
     let body = JSON.parse(response);
-    console.log(body.results)
     $("#category-one").text(body.results[0].category);
 
 
@@ -169,7 +172,6 @@ $(document).ready(function() {
     request.onload = function() {
       if(request.status === 200) {
         resolve(request.response);
-        console.log(request.status);
       }
       else {
         reject(Error(request.statusText));
@@ -181,7 +183,6 @@ $(document).ready(function() {
   });
   promise2.then(function(response: any) {
     let body = JSON.parse(response);
-    console.log(body);
     $("#category-two").text(body.results[0].category);
 
 
@@ -265,7 +266,6 @@ $(document).ready(function() {
     request.onload = function() {
       if(request.status === 200) {
         resolve(request.response);
-        console.log(request.status);
       }
       else {
         reject(Error(request.statusText));
@@ -277,7 +277,6 @@ $(document).ready(function() {
   });
   promise3.then(function(response: any) {
     let body = JSON.parse(response);
-    console.log(body);
     $("#category-three").text(body.results[0].category);
 
 
@@ -361,7 +360,6 @@ $(document).ready(function() {
     request.onload = function() {
       if(request.status === 200) {
         resolve(request.response);
-        console.log(request.status);
       }
       else {
         reject(Error(request.statusText));
@@ -373,7 +371,6 @@ $(document).ready(function() {
   });
   promise4.then(function(response: any) {
     let body = JSON.parse(response);
-    console.log(body);
     $("#category-four").text(body.results[0].category);
 
 
@@ -458,7 +455,6 @@ $(document).ready(function() {
     request.onload = function() {
       if(request.status === 200) {
         resolve(request.response);
-        console.log(request.status);
       }
       else {
         reject(Error(request.statusText));
@@ -470,7 +466,6 @@ $(document).ready(function() {
   });
   promise5.then(function(response: any) {
     let body = JSON.parse(response);
-    console.log(body);
     $("#category-five").text(body.results[0].category);
 
 
