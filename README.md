@@ -1,8 +1,14 @@
 # Jeopicodus
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.5.
+Jeopardy inspired game, created using Typescript and Angular.
 
-## Development server
+###By Drew Tucker, Faiza Husein, Josh Rochon, QianQian Hu, Victor Felix
+
+## Description
+
+Our attempt to recreate the game show Jeopardy, using Typescript with the Angular framework. Uses the OpenTDB trivia API to generate questions and answers. When the page is loaded, 5 concurrent API calls are made, using ES6 promises. Each call will populate the board with a single category, and once a square has been clicked, the question will be displayed along with the corresponding answers. The answer positions are randomly generated, to ensure that the correct answer will always be in a different spot. If the correct answer is selected, the value of the selected question will be added to that player's total. If incorrect, the points will be deducted. 
+
+## Instructions
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
