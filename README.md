@@ -4,7 +4,9 @@ https://drewtucker.github.io/Jeopicodus/
 
 Jeopardy inspired game, created using Typescript and Angular.
 
-###By Drew Tucker, Faiza Husein, Josh Rochon, QianQian Hu, Victor Felix
+
+### By Drew Tucker, Faiza Husein, Josh Rochon, QianQian Hu, Victor Felix
+
 
 ## Description
 
