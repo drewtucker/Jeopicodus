@@ -33,12 +33,13 @@ th {
   box-sizing: border-box;
   text-align: center;
   background-color: #ffffff;
-  opacity: .6;
+  opacity: .8;
   font-size: 20px;
   font-weight: bold;
   height: 100%;
   width: 100%;
   padding-top: 20px;
+  overflow: hidden;
 }
 
 .wrapperAnswer {
@@ -68,6 +69,7 @@ img {
   text-align: center;
   opacity: 0.7;
   background-color: #ffffff;
+  overflow: hidden;
 }
 .frame-score {
   width: 525px;
