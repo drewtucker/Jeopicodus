@@ -16,7 +16,6 @@ export class GameBoardComponent {
 // const gameBoard:GameBoardComponent = new GameBoardComponent();
 //COLUMN 1 API CALL
 $(document).ready(function() {
-  let audio = new Audio('../../assets/Jeopardy - Think Music.mp3');
   let thisScore;
   let answers;
   let correctAnswer;
@@ -540,7 +539,7 @@ $(document).ready(function() {
     });
   });
   $(".frame-answer").click((e)=> {
-    if(correctAnswer === $(e.target).text()) { //TRUE
+    if( e.target.firstChild.textContent === correctAnswer) { //TRUE
       alert("CORRECT")
       if(currentGame.playerOneTurn) {
         currentGame.playerOneScore += thisScore;
@@ -548,7 +547,7 @@ $(document).ready(function() {
         currentGame.playerTwoScore += thisScore;
       }
     } else {
-      alert("FALSE, correct answer: " + answers[0]);
+      alert("FALSE, correct answer: " + correctAnswer);
       if(currentGame.playerOneTurn) { //FALSE
         currentGame.playerOneScore -= thisScore;
       } else if(currentGame.playerTwoTurn) {
@@ -562,7 +561,6 @@ $(document).ready(function() {
     $("#playerTwoScore").text(currentGame.playerTwoScore);
     $('.transbox').show();
     $('.wrapperAnswer').hide();
-    audio.pause();
   })
 
 
@@ -576,7 +574,6 @@ $(document).ready(function() {
       $('.transbox').hide();
       $('.wrapperAnswer').show();
       $(this).text("");
-      audio.play();
     });
   });
 });
